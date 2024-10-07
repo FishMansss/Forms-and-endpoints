@@ -4,12 +4,16 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/question", methods=['POST'])
+@app.route('/question',  methods=['POST'])
 def endpiont():
     data = request.form
     print(data)
-    output =  print(f"<h1> {data['noun 1']} </h1>")    
-    return(output)
+    output =  f'''
+        <!DOCTYPE html>
+        <body>
+        <h1> hello {data['name1']}! I was hoping you could show me how to...{data['verb']} </h1>
+        </body>
+        '''    
+    return output
 
 app.run(port=5000)
-
